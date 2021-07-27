@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 
-const createClass = {
+
+const createClassData = {
     name: '',
     type: '',
     location: '',
@@ -8,22 +10,29 @@ const createClass = {
     duration: '',
     intensity: '',
     size: '',
-    value:'',
 };
 
-const CreateAClass = (/*need props for submit function*/) => {
-    const [classData, setClassData] =useState(createClass);
+const CreateAClass = () => {
+    const [classData, setClassData] =useState(createClassData);
+    
 
     //submit function needs to pass initial form data
     const onSubmit = evt => { 
         evt.preventDefault()
+        // axios.post('', classData)
+        //     .then(res =>  {
+        //       console.log(res)  
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
     };
 
     const onChange = evt => {
-        const {type, name, value} = evt.target;
-        setClassData(type, name, value);
-        console.log(evt.target)
-    }
+        const { name, value } = evt.target;
+        setClassData({...classData,[name]:value});
+        console.log(classData)
+    };
     return (
         <div>
             <h1> Create a class</h1>
