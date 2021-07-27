@@ -1,8 +1,13 @@
 import './App.css';
 import Form from "./Components/Sign-up-form";
-import CreateAClass from "./Components/Create-a-class"
-import BookClasses from "./Components/Book-classes";
 import SignIn from "./Components/Sign-in";
+import Form from "./components/Sign-up-form";
+import CreateAClass from "./components/Create-a-class"
+import BookClasses from "./components/Book-classes";
+import ClassList from "./components/Class-list";
+import SignIn from "./components/Sign-in";
+import EditDeleteClass from "./components/Edit-delete-class";
+import WelcomeInfo from "./components/WelcomeInfo";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 
@@ -21,6 +26,15 @@ function App() {
       </Switch>
       <Switch>
         <Route exact path="/sign-in" component={SignIn} />
+      </Switch>
+      <Switch>
+        <Route exact path="/class-list" component={ClassList} />
+      </Switch>
+      <Switch>
+        <Route exact path="/edit-class" component={EditDeleteClass} />
+      </Switch>
+      <Switch>
+        <Route exact path="/welcome-info" component={WelcomeInfo} />
       </Switch>
     </div>
   );
