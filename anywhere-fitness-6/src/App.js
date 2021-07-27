@@ -1,6 +1,4 @@
 import './App.css';
-import Form from "./Components/Sign-up-form";
-import SignIn from "./Components/Sign-in";
 import Form from "./components/Sign-up-form";
 import CreateAClass from "./components/Create-a-class"
 import BookClasses from "./components/Book-classes";
@@ -22,7 +20,7 @@ function App() {
         <Route exact path="/create-a-class" component={CreateAClass} />
       </Switch>
       <Switch>
-        <Route exact path="/book-classes" component={BookClasses} />
+        <Route  path="/book-classes" component={BookClasses} />
       </Switch>
       <Switch>
         <Route exact path="/sign-in" component={SignIn} />
