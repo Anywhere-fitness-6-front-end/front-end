@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const user = {
     name: '',
     email: '',
-    auth: '',
+    password: '',
     instructor: false,
 };
 
@@ -23,49 +23,55 @@ export default function Form (){
      setUserData({...userData, [name]:valueToUse})
      console.log(userData)
  }
-    return <div>
+    return (
+      <div>
         <form onSubmit={handleSubmit}>
-        <label>Name
+          <label>
+            Name
             <input
-            type='text'
-            name='name'
-            id='name'
-            placeholder='Full Name'
-            value={userData.name}
-            onChange={onChange}
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Full Name"
+              value={userData.name}
+              onChange={onChange}
             />
-        </label>
-        <label>Email
+          </label>
+          <label>
+            Email
             <input
-            value={userData.email}
-            type='text'
-            name='email'
-            id='email'
-            placeholder='Email'
-            onChange={onChange}
+              value={userData.email}
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Email"
+              onChange={onChange}
             />
-        </label>
-        <label>Auth Code
+          </label>
+          <label>
+            Password
             <input
-            value={userData.auth}
-            type='text'
-            name='auth'
-            id='auth'
-            placeholder='Auth Code'
-            onChange={onChange}
+              value={userData.auth}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Please enter a password"
+              onChange={onChange}
             />
-        </label>
-        <label>Instructor
+          </label>
+          <label>
+            Instructor
             <input
-            type='checkbox'
-            name='instructor'
-            id='instructor'
-            checked={userData.instructor}
-            onChange={onChange}
+              type="checkbox"
+              name="instructor"
+              id="instructor"
+              checked={userData.instructor}
+              onChange={onChange}
             />
-        </label>
-        <button id="sign-up-btn">Sign-Up</button>
+          </label>
+          <button id="sign-up-btn">Sign-Up</button>
         </form>
-    </div>
+      </div>
+    );
     
 };
