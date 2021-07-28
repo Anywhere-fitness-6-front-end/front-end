@@ -1,12 +1,13 @@
 import './App.css';
-import Form from "./Components/Sign-up-form";
-import SignIn from "./Components/Sign-in";
+import Form from "./components/Sign-up-form";
+import SignIn from "./components/Sign-in";
 import CreateAClass from "./components/Create-a-class"
-import BookClasses from "./components/Book-classes";
 import ClassList from "./components/Class-list";
 import EditDeleteClass from "./components/Edit-delete-class";
 import WelcomeInfo from "./components/WelcomeInfo";
 import { Route, Switch, Redirect } from "react-router-dom";
+import Booked from "./components/Booked/Booked";
+import ClassSearch from "./components/SearchClass/Class-Search";
 
 
 function App() {
