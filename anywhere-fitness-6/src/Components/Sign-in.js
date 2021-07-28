@@ -60,8 +60,9 @@ const SignIn = (props) => {
             
             <button id="sign-in-btn">Sign-In</button>
         </form>
-        {erroMessage && <div><h4 style={{color:'red'}}>{erroMessage}</h4>
-        <Link to="/" className="btn btn-primary">Sign-Up</Link></div>}
+        {erroMessage && <div><h4 style={{color:'red'}}>{erroMessage}</h4></div>}
+        <h5>Need an account?</h5>
+        <Link to="/" className="btn btn-primary">Sign-Up</Link>
         </div>
     )
 }

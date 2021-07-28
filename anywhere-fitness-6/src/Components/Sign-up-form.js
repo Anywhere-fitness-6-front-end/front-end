@@ -103,8 +103,9 @@ export default function Form (props){
         </label>
         <button id="sign-up-btn">Sign-Up</button>
         </form>
-        {erroMessage && <div><h4 style={{color:'red'}}>{erroMessage}</h4>
-        <Link to="/sign-in" className="btn btn-primary">Sign-In</Link></div>}
+        {erroMessage && <div><h4 style={{color:'red'}}>{erroMessage}</h4></div>}
+        <h5>Already have an account?</h5>
+        <Link to="/sign-in" className="btn btn-primary">Sign-In</Link>
     </div>
     
 };
