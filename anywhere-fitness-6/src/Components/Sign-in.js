@@ -36,9 +36,9 @@ const SignIn = (props) => {
                 <input
                 value={userData.username}
                 type='text'
-                name='Username'
-                id='emailId'
-                placeholder='username'
+                name='username'
+                id='usernameId'
+                placeholder='Username'
                 onChange={handleOnChange}
                 />
             </label>
