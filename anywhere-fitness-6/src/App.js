@@ -24,7 +24,7 @@ function App() {
         <Route path="/book-classes" component={ClassSearch} />
       </Switch>
       <Switch>
-        <Route path="/your-classes" component={Booked} />
+        <Route exact path="/your-classes" component={Booked} />
       </Switch>
       <Switch>
         <Route path="/sign-in" component={SignIn} />
