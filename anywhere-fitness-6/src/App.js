@@ -1,7 +1,4 @@
 import './App.css';
-import Form from "./Components/Sign-up-form";
-
-import SignIn from "./Components/Sign-in";
 import Form from "./components/Sign-up-form";
 import CreateAClass from "./components/Create-a-class"
 import BookClasses from "./components/Book-classes";
