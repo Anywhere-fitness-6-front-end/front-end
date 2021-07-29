@@ -12,7 +12,6 @@ import { Route, Switch, Redirect } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <h1> Homepage</h1>
       <Switch>
         <Route exact path="/" component={Form} />
       </Switch>
