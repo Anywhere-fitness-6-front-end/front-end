@@ -8,6 +8,8 @@ export const GET_CLASSES = "GET_CLASSES"
 export const FETCH_CLASS_START = "FETCH_CLASS_STAR";
 export const FETCH_CLASS_SUCCESS = "FETCH_CLASS_SUCCESS";
 export const FETCH_CLASS_FAIL = "FETCH_CLASS_FAIL";
+export const DECREASE_CLASS_SPOTS = "DECREASE_CLASS_SPOTS";
+export const INCREASE_CLASS_SPOTS = "INCREASE_CLASS_SPOTS";
 
 
 export const deleteClass = (id) => {
@@ -37,7 +39,7 @@ export const getClassList = () => {
     axios
       .get("/data.json")
       .then((res) => {
-        dispatch({ type: FETCH_CLASS_SUCCESS, payload: res });
+        dispatch({ type: FETCH_CLASS_SUCCESS, payload: res.data });
       })
       .catch((err) => {
         console.log(err);
@@ -63,5 +65,19 @@ export const fetchFail = (error) => {
   return {
     type: FETCH_CLASS_FAIL,
     payload: error,
+  };
+};
+
+export const decreaseClassSpots = (count) => {
+  return {
+    type: DECREASE_CLASS_SPOTS,
+    payload: count,
+  }
+}
+
+export const increaseClassSpots = (count) => {
+  return {
+    type: DECREASE_CLASS_SPOTS,
+    payload: count,
   };
 };

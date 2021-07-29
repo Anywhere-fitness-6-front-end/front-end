@@ -6,7 +6,9 @@ import {
   SEARCH_CLASS_LIST,
   FETCH_CLASS_START,
   FETCH_CLASS_SUCCESS,
-  FETCH_CLASS_FAIL
+  FETCH_CLASS_FAIL,
+  DECREASE_CLASS_SPOTS,
+  INCREASE_CLASS_SPOTS,
 } from "../actions/classActions";
 
 
@@ -53,10 +55,10 @@ const reducer = (state = initialState, action) => {
         class: [...state.class, { ...action.payload, id: Date.now() }],
       };
     case SEARCH_CLASS_LIST: {
-        const {value} = action;
-        const classes = state.classListData.filter((val) => val.includes(value));
-        return {...state, value, classes}
-      }
+      const { value } = action;
+      const classes = state.classListData.filter((val) => val.includes(value));
+      return { ...state, value, classes };
+    }
     case FETCH_CLASS_START:
       return {
         ...state,
@@ -73,6 +75,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         error: action.payload,
+      };
+    case DECREASE_CLASS_SPOTS:
+      return {
+        ...state,
+        spots: state.spots - 1,
+      };
+    case INCREASE_CLASS_SPOTS:
+      return {
+        ...state,
+        spots: state.spots + 1,
       };
     default:
       return state;
