@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
     case ADD_CLASS:
       return {
         ...state,
-        class: [...state.class, { ...action.payload, id: Date.now() }],
+        class: [...state.classes, { ...action.payload, id: Date.now() }],
       };
     case EDIT_CLASS:
       return {

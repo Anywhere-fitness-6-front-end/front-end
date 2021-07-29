@@ -16,8 +16,28 @@ export const deleteClass = (id) => {
   return { type: DELETE_CLASS, payload: id };
 };
 
-export const addClass = (id) => {
-  return { type: ADD_CLASS, payload: id };
+export const addClass = (newClass) => {
+  return (dispatch) => {
+    dispatch({ type: ADD_CLASS });
+
+    const newClass = {
+      class_name: "Yoga with Lily",
+      class_time: "2021-07-31T01:00:00.000Z",
+      duration: 90,
+      activity_name: "yoga",
+      intensity: "moderate",
+      address: "123 Yoga Lane, Sun Town, CA",
+      max_size: 12,
+    };
+
+    axios.post("https://infinite-anchorage-25635.herokuapp.com/classes", newClass)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+  })
+  } 
 };
 
 
@@ -40,6 +60,7 @@ export const getClassList = () => {
       .get("/data.json")
       .then((res) => {
         dispatch({ type: FETCH_CLASS_SUCCESS, payload: res.data });
+        console.log(res)
       })
       .catch((err) => {
         console.log(err);

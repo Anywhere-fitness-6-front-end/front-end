@@ -1,35 +1,49 @@
 import React, { useEffect } from "react"
 import { connect } from 'react-redux';
-import { getClassList } from "../redux/actions/classActions";
+import { getClassList, addClass } from "../redux/actions/classActions";
 
   
 
 const ClassList = (props) => {
-  const { classListData, isFetching, error } = props;
+  const { classListData, isFetching, error, spots } = props;
   useEffect(() => {
     props.getClassList();
-    console.log(classListData)
+    
   }, []) 
 
   const handleBookClass = () => {
     props.bookClass()
   }
+
+  const decrease = () => {
+    console.log(classListData.spots);
+  }
+
+  const addClassEvent = (e) => {
+    e.preventDefault()
+    props.addClass()
+  }
     return (
       <div>
-        {classListData.map((item) => {
+{console.log(classListData)}
+        {/* {classListData.map(item => {
           return (
+            <>
             <ol>
               <li> Location: {item.location} </li>
-              <li> Date: {item.date} </li>
-              <li> Time: {item.time} </li>
+              <li> Date: {item.classDate} </li>
+              <li> Time: {item.classTime} </li>
               <li> Duration: {item.duration} </li>
-              <li> Intensity: {item.intensity} </li>
+              <li> Intensity: {item.intensityLevel} </li>
               <li> Instructor: {item.instructor} </li>
-              <li> Spots: {item.openSpots} </li>
+              <li> Spots: {item.spots} </li>
             </ol>
+            <button onClick={handleBookClass}>Book Class</button> 
+            <button onClick={decrease}> dec</button>
+            </>
           );
-        })}
-        {/* <button onClick={handleBookClass}>Book Class</button> <span> </span> */}
+        })} */}
+        <button onClick={addClassEvent}>Add</button>
       </div>
     );
 }
@@ -38,10 +52,10 @@ const mapStateToProps = state => {
   return {
     classListData: state.classListData,
     isFetching: state.isFetching,
-    error: state.error
+    error: state.error,
   }
 }
 
 
-export default connect(mapStateToProps, { getClassList })(ClassList);
+export default connect(mapStateToProps, { getClassList, addClass })(ClassList);
 
