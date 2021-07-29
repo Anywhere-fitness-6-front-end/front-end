@@ -5,11 +5,9 @@ import {Link} from 'react-router-dom'
 
 
 const user = {
-    username:'',
+    email:'',
     password:'',
     name: '',
-    email: '',
-    auth: '',
     instructor: false,
 };
 
@@ -41,13 +39,13 @@ export default function Form (props){
  }
     return <div>
         <form onSubmit={handleSubmit}>
-        <label>Username
+        <label>Email
                 <input
-                value={userData.username}
-                type='text'
-                name='username'
-                id='usernameId'
-                placeholder='Username'
+                value={userData.email}
+                type='email'
+                name='email'
+                id='emailId'
+                placeholder='Email'
                 onChange={onChange}
                 required/>
             </label>
@@ -72,26 +70,6 @@ export default function Form (props){
             onChange={onChange}
             required/>
         </label>
-        <label>Email
-            <input
-            value={userData.email}
-            type='email'
-            name='email'
-            id='email'
-            placeholder='Email'
-            onChange={onChange}
-            required/>
-        </label>
-        <label>Auth Code
-            <input
-            value={userData.auth}
-            type='text'
-            name='auth'
-            id='auth'
-            placeholder='Auth Code'
-            onChange={onChange}
-            required/>
-        </label>
         <label>Instructor
             <input
             type='checkbox'
@@ -103,9 +81,12 @@ export default function Form (props){
         </label>
         <button id="sign-up-btn">Sign-Up</button>
         </form>
+
         {erroMessage && <div><h4 style={{color:'red'}}>{erroMessage}</h4></div>}
+
         <h5>Already have an account?</h5>
         <Link to="/sign-in" className="btn btn-primary">Sign-In</Link>
+
     </div>
     
 };

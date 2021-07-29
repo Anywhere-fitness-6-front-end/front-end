@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 
 const user = {
-    username: '',
+    email: '',
     password: '',
 };
 
@@ -36,13 +36,13 @@ const SignIn = (props) => {
     return (
         <div>
         <form onSubmit={handleSubmit}>
-            <label>Username
+            <label>Email
                 <input
                 value={userData.username}
-                type='text'
-                name='username'
-                id='usernameId'
-                placeholder='Username'
+                type='email'
+                name='email'
+                id='emailId'
+                placeholder='Email'
                 onChange={handleOnChange}
                 required/>
             </label>
@@ -60,9 +60,12 @@ const SignIn = (props) => {
             
             <button id="sign-in-btn">Sign-In</button>
         </form>
+
         {erroMessage && <div><h4 style={{color:'red'}}>{erroMessage}</h4></div>}
+
         <h5>Need an account?</h5>
         <Link to="/" className="btn btn-primary">Sign-Up</Link>
+
         </div>
     )
 }
