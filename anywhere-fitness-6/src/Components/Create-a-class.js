@@ -1,5 +1,7 @@
 //import axios from "axios";
 import React, { useState } from "react";
+import '../App.css';
+import '../index.css';
 
 
 const createClassData = {
@@ -36,54 +38,55 @@ const CreateAClass = () => {
         console.log(classData)
     };
     return (
-        <div>
-            <h1> Create a class</h1>
+        <div className='createClassDiv'>
+            <h1 className='createClassHeader'> Create a class</h1>
             <form className="createClassForm" onSubmit={onSubmit}>
-                <label>Class Name
+                <label htmlFor='class_name' className='createClassLabel'>Class Name</label>
                     <input
+                        className='createClassInput'
                         type='text'
                         name='class_name'
                         placeholder='Class Name'
                         value={classData.class_name}
                         onChange={onChange}    
                     />
-                </label>
-                <label>Instructor Name
+                <label htmlFor='instructor_name' className='createClassLabel'>Instructor Name</label>
                     <input
+                        className='createClassInput'
                         type='text'
                         name='instructor_name'
                         placeholder='Instructor Name'
                         value={classData.instructor_name}
                         onChange={onChange}    
                     />
-                </label>
-                <label>Activity Name
+                <label htmlFor='activity_name' className='createClassLabel'>Activity Name</label>
                     <input
+                        className='createClassInput'
                         type='text'
                         name='activity_name'
                         placeholder='Type of Class'
                         value={classData.activity_name}
                         onChange={onChange}
                     />
-                </label>
-                <label>Class Time
+                <label htmlFor='class_time' className='createClassLabel'>Class Time</label>
                    <input
+                        className='createClassInput'
                         type='datetime-local'
                         name='class_time'
                         value={classData.class_time}
                         onChange={onChange}
                    />      
-                </label>
-                <label>Duration
+                <label htmlFor='duration' className='createClassLabel'>Duration</label> 
                     <input
+                        className='createClassInput'
                         type='number'
                         name='duration'
                         value={classData.duration}
                         onChange={onChange}
-                    />
-                </label>    
-                <label>Intensity Level
+                    />   
+                <label htmlFor='intensity' className='createClassLabel'>Intensity Level</label>
                     <select
+                        className='createClassInput'
                         name='intensity'
                         value={classData.intensity}
                         onChange={onChange}
@@ -93,32 +96,31 @@ const CreateAClass = () => {
                         <option value='medium'>Medium</option>
                         <option value='hard'>Hard</option>
                     </select>
-                </label>
-                <label>Address
+                <label htmlFor='address' className='createClassLabel'>Address</label>
                     <input
+                        className='createClassInput'
                         type='text'
                         name='address'
                         placeholder='Address of Class'
                         value={classData.address}
                         onChange={onChange}
                     />
-                </label>
-                <label>Max Class Size
+                <label htmlFor='max_size' className='createClassLabel'>Max Class Size</label>
                     <input
+                        className='createClassInput'
                         type='number'
                         name='max_size'
                         value={classData.max_size}
                         onChange={onChange}
                     />
-                </label>
-                <label>Available Slots
+                <label htmlFor='available_slots' className='createClassLabel'>Available Slots</label>
                     <input
+                        className='createClassInput'
                         type='number'
                         name='available_slots'
                         value={classData.available_slots}
                         onChange={onChange}
                     />
-                </label>
                 <button id='addClass'>Add Class</button>
             </form>
         </div>
