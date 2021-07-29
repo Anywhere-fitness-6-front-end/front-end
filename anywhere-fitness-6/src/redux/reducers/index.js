@@ -13,22 +13,24 @@ import {
 
 
 const initialState = {
-  classListData: {
-    id: "",
-    name: "",
-    classTime: "", 
-    classDate: "", 
-    duration: "", 
-    classType: "", 
-    intensityLevel: "",
-    location: "",
-    instructor: "",
-    spots: "",
+      classListData: {
+      activity_name: "",
+      address: "",
+      available_slots: "",
+      class_id: "",
+      class_name: "",
+      class_time: "",
+      created_at: "",
+      duration: "",
+      instructor_id: "",
+      intensity: "",
+      max_size: "",
+      updated_at: ""
   },
   isFetching: false,
   error: "",
   value: "",
-  classes: []
+  classes: [],
 };
 
 
@@ -42,17 +44,19 @@ const reducer = (state = initialState, action) => {
     case ADD_CLASS:
       return {
         ...state,
-        class: [...state.classes, { ...action.payload, id: Date.now() }],
+        classListData: [...state.classListData, { ...action.payload.createdClass}]
       };
     case EDIT_CLASS:
       return {
         ...state,
-        class: [...state.class, { ...action.payload, id: Date.now() }],
+        classListData: state.classListData.map((item) => {
+          return item.class_id === action.payload.updatedClass.class_id ? action.payload.updatedClass : item;
+        })
       };
     case BOOK_CLASS:
       return {
         ...state,
-        class: [...state.class, { ...action.payload, id: Date.now() }],
+        class: [...state.class, { ...action.payload, }],
       };
     case SEARCH_CLASS_LIST: {
       const { value } = action;
@@ -79,12 +83,7 @@ const reducer = (state = initialState, action) => {
     case DECREASE_CLASS_SPOTS:
       return {
         ...state,
-        spots: state.spots - 1,
-      };
-    case INCREASE_CLASS_SPOTS:
-      return {
-        ...state,
-        spots: state.spots + 1,
+        classListData: action.payload
       };
     default:
       return state;

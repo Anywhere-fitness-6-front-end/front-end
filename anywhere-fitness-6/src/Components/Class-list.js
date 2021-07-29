@@ -8,42 +8,42 @@ const ClassList = (props) => {
   const { classListData, isFetching, error, spots } = props;
   useEffect(() => {
     props.getClassList();
-    
   }, []) 
 
-  const handleBookClass = () => {
-    props.bookClass()
-  }
+  // const handleBookClass = () => {
+  //   props.bookClass()
+  // }
 
   const decrease = () => {
-    console.log(classListData.spots);
+    console.log(classListData);
+
   }
 
-  const addClassEvent = (e) => {
-    e.preventDefault()
-    props.addClass()
-  }
+  // const addClassEvent = (e) => {
+  //   e.preventDefault()
+  //   props.addClass()
+  // }
     return (
       <div>
-{console.log(classListData)}
-        {/* {classListData.map(item => {
+        {console.log("classlist", classListData)}
+        {classListData.map((item) => {
           return (
             <>
-            <ol>
-              <li> Location: {item.location} </li>
-              <li> Date: {item.classDate} </li>
-              <li> Time: {item.classTime} </li>
-              <li> Duration: {item.duration} </li>
-              <li> Intensity: {item.intensityLevel} </li>
-              <li> Instructor: {item.instructor} </li>
-              <li> Spots: {item.spots} </li>
-            </ol>
-            <button onClick={handleBookClass}>Book Class</button> 
-            <button onClick={decrease}> dec</button>
+              <ol>
+                <li> Location: {item.address} </li>
+                <li> Date: {item.classDate} </li>
+                <li> Time: {item.class_time} </li>
+                <li> Duration: {item.duration} </li>
+                <li> Intensity: {item.intensity} </li>
+                <li> Instructor: {item.instructor} </li>
+                <li> Spots: {item.max_size} </li>
+                <button onClick={decrease}> dec</button>
+              </ol>
             </>
           );
-        })} */}
-        <button onClick={addClassEvent}>Add</button>
+        })}
+        {/* <button onClick={handleBookClass}>Book Class</button>
+         */}
       </div>
     );
 }

@@ -8,6 +8,7 @@ import WelcomeInfo from "./components/WelcomeInfo";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Booked from "./components/Booked/Booked";
 import ClassSearch from "./components/SearchClass/Class-Search";
+// import PrivateRoute from "./components/Route";
 
 
 function App() {
@@ -20,9 +21,9 @@ function App() {
       <Switch>
         <Route path="/create-a-class" component={CreateAClass} />
       </Switch>
-      {/* <Switch>
+      <Switch>
         <Route path="/book-classes" component={ClassSearch} />
-      </Switch> */}
+      </Switch>
       <Switch>
         <Route exact path="/your-classes" component={Booked} />
       </Switch>
