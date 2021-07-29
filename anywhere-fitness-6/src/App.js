@@ -20,9 +20,9 @@ function App() {
       <Switch>
         <Route path="/create-a-class" component={CreateAClass} />
       </Switch>
-      <Switch>
+      {/* <Switch>
         <Route path="/book-classes" component={ClassSearch} />
-      </Switch>
+      </Switch> */}
       <Switch>
         <Route exact path="/your-classes" component={Booked} />
       </Switch>

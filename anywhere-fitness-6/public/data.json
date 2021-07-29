@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1234,
+    "name": "Beginners Circuit",
+    "time": "6PM EST",
+    "date": "December 11th, 2016",
+    "duration": "2Hr",
+    "location": "Chicago, Illinois",
+    "instructor": "Craig",
+    "intensity": "Low",
+    "spots": 15
+  },
+  {
+    "id": 1235,
+    "name": "Cardio Blast",
+    "time": "3PM EST",
+    "date": "January 27th, 2017",
+    "duration": "1Hr",
+    "location": "Detroit, Michigan",
+    "instructor": "Jen",
+    "intensity": "High",
+    "spots": 10
+  },
+  {
+    "id": 1234,
+    "name": "Advanced Aerobics",
+    "time": "3PM EST",
+    "date": "March 11th, 2016",
+    "duration": "3Hr",
+    "location": "Cleveland, Ohio",
+    "instructor": "Todd",
+    "intensity": "High",
+    "spots": 12
+  },
+  {
+    "id": 1236,
+    "name": "ASan",
+    "time": "3as",
+    "date": "March 14th, 2016",
+    "duration": "3",
+    "location": "London",
+    "instructor": "Neil",
+    "intensity": "Medium",
+    "spots": "15"
+  }
+]
+
+

@@ -3,6 +3,7 @@ import {
   ADD_CLASS,
   EDIT_CLASS,
   BOOK_CLASS,
+  SEARCH_CLASS_LIST,
   FETCH_CLASS_START,
   FETCH_CLASS_SUCCESS,
   FETCH_CLASS_FAIL
@@ -10,20 +11,22 @@ import {
 
 
 const initialState = {
-  class: {
+  classListData: {
     id: "",
     name: "",
-    classTime: "time", 
-    classDate: "date", 
-    duration: "30", 
-    classType: "as", 
-    intensityLevel: "inte",
-    location: "loca",
-    instructor: "inst",
-    spots: 5,
+    classTime: "", 
+    classDate: "", 
+    duration: "", 
+    classType: "", 
+    intensityLevel: "",
+    location: "",
+    instructor: "",
+    spots: "",
   },
   isFetching: false,
   error: "",
+  value: "",
+  classes: []
 };
 
 
@@ -49,6 +52,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         class: [...state.class, { ...action.payload, id: Date.now() }],
       };
+    case SEARCH_CLASS_LIST: {
+        const {value} = action;
+        const classes = state.classListData.filter((val) => val.includes(value));
+        return {...state, value, classes}
+      }
     case FETCH_CLASS_START:
       return {
         ...state,
@@ -58,7 +66,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        person: action.payload,
+        classListData: action.payload,
       };
     case FETCH_CLASS_FAIL:
       return {

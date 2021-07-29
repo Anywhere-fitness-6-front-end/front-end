@@ -12,28 +12,34 @@ const ClassList = (props) => {
 
   const handleBookClass = () => {
     props.bookClass()
+
+    
   }
   
     return (
       <div>
-        <h2>{classListData.name}</h2>
-        <ol>
-          <li> Location: {classListData.location} </li>
-          <li> Date: {classListData.date} </li>
-          <li> Time: {classListData.time} </li>
-          <li> Duration: {classListData.duration} </li>
-          <li> Intensity: {classListData.intensity} </li>
-          <li> Instructor: {classListData.instructor} </li>
+        {classListData.data.map((item) => {
+          return (
+            <ol>
+          <li> Location: {item.location} </li>
+          <li> Date: {item.date} </li>
+          <li> Time: {item.time} </li>
+          <li> Duration: {item.duration} </li>
+          <li> Intensity: {item.intensity} </li>
+          <li> Instructor: {item.instructor} </li>
         </ol>
+          )
+        })
+    }   
         <button onClick={handleBookClass}>Book Class</button> <span> </span>
-        <button> Available Spots: {classListData.openSpots} </button>
+        <button> Available Spots: {classListData.data.openSpots} </button>
       </div>
     );
 }
 
 const mapStateToProps = state => {
   return {
-    ClassListData: state.ClassListData,
+    classListData: state.classListData,
     isFetching: state.isFetching,
     error: state.error
   }
