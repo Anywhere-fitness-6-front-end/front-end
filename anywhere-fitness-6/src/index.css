@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-/* Create a class styling */
+/*Create A Class Styling*/
 
 .createClassDiv{
   width:35%; 
@@ -68,8 +68,79 @@ code {
   border: none;
 }
 
+/*Edit/Delete A Class Styling*/
+
+.editClassDiv{
+  width:35%; 
+  margin: 0 auto;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: solid 50px #4185F4;
+  background-color: white;
+
+}
+.editClassHeader{
+ color: #487ECE;
+ text-transform: uppercase;
+ font-size:1.5rem;
+ margin-right: 40%;
+ margin-top: 2%;
+
+}
+.editClassForm {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+}
+.editClassLabel {
+  display: flex;
+  align-items: flex-start;
+  font-size:1.2rem;
+  color:gray;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.editClassInput {
+  padding: 2% 0;
+  width: 98%;
+  background-color: #E5E5E5;
+  border: none;
+
+}
+#editClass {
+  margin-top:2%;
+  margin-bottom: 5%;
+  padding: 2% 0;
+  width: 98%;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color:white;
+  background-color: #4185F4;
+  border: none;
+}
+#deleteClass{
+  margin-top:0;
+  margin-bottom: 5%;
+  padding: 2% 0;
+  width: 98%;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color:white;
+  background-color: #4185F4;
+  border: none;
+}
+
 /*Responsive Styles*/
+
 @media(max-width: 1000px){
+/*Create A Class Styling*/
+
   .createClassDiv{
     width:60%;
   }
@@ -77,9 +148,21 @@ code {
     font-size:1.5rem;
     margin-right:42%;
   }
+
+/*Edit/Delete A Class Styling*/
+
+  .editClassDiv{
+    width:60%;
+  }
+  .editClassHeader{
+    font-size:1rem;
+    margin-right:50%;
+  }
 }
 
 @media(max-width: 600px){
+/*Create A Class Styling*/
+
   .createClassDiv{
     width:70%;
     margin-top: 20%;
@@ -99,5 +182,15 @@ code {
     padding: 1.5% 0;
     width:97%;
     font-size:1rem;
+  }
+
+/*Edit/Delete A Class Styling*/
+
+  .editClassDiv{
+    width:60%;
+  }
+  .editClassHeader{
+    font-size:.9rem;
+    margin-right:35%;
   }
 }
