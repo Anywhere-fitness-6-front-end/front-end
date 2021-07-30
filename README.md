@@ -16,6 +16,6 @@ Users will only be able to book classes that have available spots as well as can
 - [ ] Install the dependencies using `npm install` 
 - [ ] Start the app using `npm start`
 - [ ] Implement the project, committing changes regularly 
-- [ ] Push commits: git push origin `<branch-name>`
+- [ ] Push commits: git push -u origin `<branch-name>`
 
 
