@@ -1,25 +1,39 @@
 import React, { useEffect } from "react"
 import { connect } from 'react-redux';
-import { getClassList, addClass } from "../redux/actions/classActions";
-import { useHistory } from "react-router";
+import {
+  getClassList,
+  addClass,
+  bookClass,
+} from "../redux/actions/classActions";
+import { useHistory, useParams } from "react-router";
+import { useDispatch } from "react-redux";
+import axiosWithAuth from "../utils/axiosWithAuth";
+import Booked from "./Booked/Booked";
 
-  
 
 const ClassList = (props) => {
-  const { classListData, isFetching, error, spots } = props;
+  const { classListData, bookedClasses, isFetching, error, spots } = props;
   useEffect(() => {
     props.getClassList();
   }, []) 
 
  const { push } = useHistory();
+ const { id } = useParams();
+ const dispatch = useDispatch();
 
  const handleEdit = (id) => {
-   push(`/edit-class/${id}`);
+   console.log(id)
+  //  push(`/edit-class/${id}`);
  };
+
+ const handleBook = (id) => {
+  dispatch(bookClass(id));
+  console.log("classID", id)
+  // console.log("booked classes array", bookedClasses)
+ }
  
     return (
       <div>
-        {console.log("class list data", classListData)}
         {classListData.length > 0 ? classListData.map((item)  => {
           return (
             <>
@@ -31,8 +45,14 @@ const ClassList = (props) => {
                 <li> Intensity: {item.intensity} </li>
                 <li> Instructor: {item.instructor} </li>
                 <li> Spots: {item.max_size} </li>
-                <button onClick={() => handleEdit(item.class_id)}>Update</button>
+                <button onClick={() => handleEdit(item.class_id)}>
+                  Update
+                </button>
+                <button onClick={() => handleBook(item.class_id)}>
+                  Book
+                </button>
               </ol>
+              <Booked />
             </>
           );
         }) : null} 
@@ -42,6 +62,7 @@ const ClassList = (props) => {
 
 const mapStateToProps = state => {
   return {
+    bookedClasses: state.bookedClasses,
     classListData: state.classListData,
     isFetching: state.isFetching,
     error: state.error,
@@ -49,5 +70,7 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { getClassList, addClass })(ClassList);
+export default connect(mapStateToProps, { getClassList, addClass, bookClass })(
+  ClassList
+);
 

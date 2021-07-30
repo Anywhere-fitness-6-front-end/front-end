@@ -1,29 +1,27 @@
-// import React from 'react';
-// import { useStateValue } from '../../context/StateProvider';
-// import BookedClasses from './Booked-classes';
+import React from 'react';
+import { connect } from "react-redux";
 
+const Booked = (props) => {
+const { bookedClasses } = props;
+console.log("bookedclasses booked", bookedClasses)
+    return (
+        <div>
+            <h1> 
+              Booked list
+            </h1>
+            {bookedClasses.map((item) => {
+              return (
+                <p>{item.name}</p>
+              )
+            })}
+        </div>
+    );
+}
 
-// function Booked({ id, name, location, date, time, duration, intensity, instructor, spots}) {
-//     const [{booked}] = useStateValue();
+const mapStateToProps = state => {
+    return {
+      bookedClasses: state.bookedClasses,
+    };
+}
 
-
-//     return (
-//         <div>
-//             {booked?.map((classes) => (
-//                 <BookedClasses
-//                     id={classes.id}
-//                     name={classes.name}
-//                     location={classes.location}
-//                     date={classes.date}
-//                     time={classes.time}
-//                     duration={classes.duration}
-//                     intensity={classes.intensity}
-//                     instructor={classes.instructor}
-//                     spots={classes.spots}
-//                  />
-//             ))}
-//         </div>
-//     )
-// }
-
-// export default Booked
+export default connect(mapStateToProps)(Booked);

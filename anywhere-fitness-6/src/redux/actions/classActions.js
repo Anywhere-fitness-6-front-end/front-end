@@ -13,6 +13,7 @@ export const INCREASE_CLASS_SPOTS = "INCREASE_CLASS_SPOTS";
 export const CLASS_ADDED = "CLASS_ADDED";
 export const CLASS_EDITED = "CLASS_EDITED";
 export const CLASS_DELETED = "CLASS_DELETED";
+export const CLASS_BOOKED = "CLASS_BOOKED";
 
 export const deleteClass = (id) => {
   return (dispatch) => {
@@ -44,6 +45,9 @@ export const addClass = (newClass) => {
   } 
 };
 
+export const classAdded = (newClass) => {
+  return { type: CLASS_ADDED, payload: newClass };
+};
 
 export const editClass = (id, editedClass) => {
   return (dispatch) => {
@@ -63,9 +67,25 @@ export const classEdited = (editedClass) => {
   return { type: CLASS_EDITED, payload: editedClass };
 };
 
-export const bookClass = (id) => {
-  return { type: BOOK_CLASS, payload: id };
+
+export const bookClass = (class_id) => {
+  console.log("bookclass action", class_id);
+  return (dispatch) => {
+    axiosWithAuth()
+      .post(`/enroll/${class_id}`)
+      .then((res) => {
+        // dispatch(classBooked(id))  changed from class_id
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 };
+
+export const classBooked = (class_id) => {
+  return { type: CLASS_BOOKED, payload: class_id}
+}
 
 export function searchClassList(value) {
   return { type: SEARCH_CLASS_LIST, value };
@@ -114,13 +134,3 @@ export const decreaseClassSpots = (available_slots) => {
   };
 };
 
-export const increaseClassSpots = (count) => {
-  return {
-    type: DECREASE_CLASS_SPOTS,
-    payload: count,
-  };
-};
-
-export const classAdded = (newClass) => {
-  return { type: CLASS_ADDED, payload: newClass };
-};

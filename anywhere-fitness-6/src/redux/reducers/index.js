@@ -9,7 +9,8 @@ import {
   FETCH_CLASS_START,
   FETCH_CLASS_SUCCESS,
   FETCH_CLASS_FAIL,
-  DECREASE_CLASS_SPOTS
+  DECREASE_CLASS_SPOTS,
+  CLASS_BOOKED
 } from "../actions/classActions";
 
 
@@ -31,7 +32,9 @@ const initialState = {
   isFetching: false,
   error: "",
   value: "",
-  classes: [],
+  bookedClasses: [
+    {name: "booked 1"}
+  ],
 };
 
 
@@ -42,6 +45,15 @@ const reducer = (state = initialState, action) => {
         ...state,
         class: state.class.filter((item) => action.payload !== item.id),
       };
+
+    case CLASS_DELETED:
+      return {
+        ...state,
+        classListData: state.classListData.filter(
+          (item) => item.class_id !== action.payload
+        ),
+      };
+
     case ADD_CLASS:
       return {
         ...state,
@@ -51,7 +63,7 @@ const reducer = (state = initialState, action) => {
         ],
       };
     case CLASS_EDITED:
-      console.log(state.classListData)
+      console.log(state.classListData);
       return {
         ...state,
         classListData: state.classListData.map((item) => {
@@ -60,16 +72,15 @@ const reducer = (state = initialState, action) => {
             : item;
         }),
       };
-      case CLASS_DELETED:
-        return {
-          ...state,
-          classListData: state.classListData.filter((item) => item.class_id !== action.payload),
-        };
-    case BOOK_CLASS:
+
+    case CLASS_BOOKED:
       return {
         ...state,
-        class: [...state.class, { ...action.payload }],
+        classListData: state.classListData.available_slots - 1,
+        bookedClasses: action.payload,
       };
+
+      
     case SEARCH_CLASS_LIST: {
       const { value } = action;
       const classes = state.classListData.filter((val) => val.includes(value));
