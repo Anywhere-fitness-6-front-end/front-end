@@ -2,13 +2,13 @@ import {
   DELETE_CLASS,
   ADD_CLASS,
   EDIT_CLASS,
+  CLASS_EDITED,
   BOOK_CLASS,
   SEARCH_CLASS_LIST,
   FETCH_CLASS_START,
   FETCH_CLASS_SUCCESS,
   FETCH_CLASS_FAIL,
-  DECREASE_CLASS_SPOTS,
-  INCREASE_CLASS_SPOTS,
+  DECREASE_CLASS_SPOTS
 } from "../actions/classActions";
 
 
@@ -44,19 +44,25 @@ const reducer = (state = initialState, action) => {
     case ADD_CLASS:
       return {
         ...state,
-        classListData: [...state.classListData, { ...action.payload.createdClass}]
+        classListData: [
+          ...state.classListData,
+          { ...action.payload.createdClass },
+        ],
       };
-    case EDIT_CLASS:
+    case CLASS_EDITED:
+      console.log(state.classListData)
       return {
         ...state,
         classListData: state.classListData.map((item) => {
-          return item.class_id === action.payload.updatedClass.class_id ? action.payload.updatedClass : item;
-        })
+          return item.class_id === action.payload.updatedClass.class_id
+            ? action.payload.updatedClass
+            : item;
+        }),
       };
     case BOOK_CLASS:
       return {
         ...state,
-        class: [...state.class, { ...action.payload, }],
+        class: [...state.class, { ...action.payload }],
       };
     case SEARCH_CLASS_LIST: {
       const { value } = action;
@@ -83,7 +89,7 @@ const reducer = (state = initialState, action) => {
     case DECREASE_CLASS_SPOTS:
       return {
         ...state,
-        classListData: action.payload
+        classListData: action.payload,
       };
     default:
       return state;

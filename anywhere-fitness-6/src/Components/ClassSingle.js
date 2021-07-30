@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router";
-
+import { editClass } from "../redux/actions/classActions";
 
 const initialValues = 
-  {
-    class_name: "",
+  [
+    {class_name: "",
     instructor_name: "",
     activity_name: "",
     address: "",
@@ -15,51 +16,40 @@ const initialValues =
     max_size: "",
     available_slots: "",
     id: "",
-  };
+    }];
 
 const ClassSingle = () => {
-  const [classData, setClassData] = useState(initialValues);
+  const [formData, setformData] = useState(initialValues);
 
-  //function needs params id to work properly
-//   const onDelete = (id) => {
-//     console.log(dummyData[0].id);
-//     const newSet = dummyData.filter((item) => {
-//       return item.id !== 1;
-//     });
-//     setClassData(newSet);
-//     //     setClassData({
-//     //       classData: dummyData.filter(item => item.id !== id)
-//     // const setClassData = classData.splice(classData.indexOf(value), 1);
+  const { id } = useParams();
+  const { push } = useHistory();
+   const dispatch = useDispatch();
 
-//     // })
-//     console.log("this is the result", newSet);
-//   };
+   useEffect(() => {
+     axiosWithAuth()
+       .get(`classes/${id}`)
+       .then((res) => {
+         setformData(res.data);
+         console.log(res);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   }, [id]); 
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    //console.log("this is the result", classData)
+    dispatch(editClass(id, formData));
+    push("/class-list");
   };
 
   const onChange = (evt) => {
     const { name, value } = evt.target;
-    setClassData({ ...classData, [name]: value });
-    // console.log(classData)
+    setformData({ ...formData, [name]: value });
   };
 
-  const { id } = useParams();
-  const { push } = useHistory();
 
- useEffect(() => {
-     axiosWithAuth()
-     .get(`classes/${id}`)
-     .then((res) => {
-         setClassData(res.data)
-         console.log(res)
-     })
-     .catch((err) => {
-         console.log(err)
-     })
- }, [id]) 
+
 
 
   return (
@@ -72,7 +62,7 @@ const ClassSingle = () => {
             type="text"
             name="class_name"
             placeholder="Class Name"
-            value={classData.class_name}
+            value={formData.class_name}
             onChange={onChange}
           />
         </label>
@@ -82,7 +72,7 @@ const ClassSingle = () => {
             type="text"
             name="instructor_name"
             placeholder="Instructor Name"
-            value={classData.instructor_name}
+            value={formData.instructor_name}
             onChange={onChange}
           />
         </label>
@@ -92,16 +82,16 @@ const ClassSingle = () => {
             type="text"
             name="activity_name"
             placeholder="Type of Class"
-            value={classData.activity_name}
+            value={formData.activity_name}
             onChange={onChange}
           />
         </label>
         <label>
           Class Time
           <input
-            type="datetime-local"
+            type="datetime"
             name="class_time"
-            value={classData.class_time}
+            value={formData.class_time}
             onChange={onChange}
           />
         </label>
@@ -110,7 +100,7 @@ const ClassSingle = () => {
           <input
             type="number"
             name="duration"
-            value={classData.duration}
+            value={formData.duration}
             onChange={onChange}
           />
         </label>
@@ -118,7 +108,7 @@ const ClassSingle = () => {
           Intensity Level
           <select
             name="intensity"
-            value={classData.intensity}
+            value={formData.intensity}
             onChange={onChange}
           >
             <option value="">Select an Intensity</option>
@@ -133,7 +123,7 @@ const ClassSingle = () => {
             type="text"
             name="address"
             placeholder="Address of Class"
-            value={classData.address}
+            value={formData.address}
             onChange={onChange}
           />
         </label>
@@ -142,7 +132,7 @@ const ClassSingle = () => {
           <input
             type="number"
             name="max_size"
-            value={classData.max_size}
+            value={formData.max_size}
             onChange={onChange}
           />
         </label>
@@ -151,7 +141,7 @@ const ClassSingle = () => {
           <input
             type="number"
             name="available_slots"
-            value={classData.available_slots}
+            value={formData.available_slots}
             onChange={onChange}
           />
         </label>

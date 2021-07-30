@@ -34,8 +34,9 @@ export const addClass = (newClass) => {
 export const editClass = (id, editedClass) => {
   return (dispatch) => {
     axiosWithAuth()
-      .patch("with id", editedClass)
+      .put(`classes/${id}`, editedClass)
       .then((res) => {
+        console.log("check", res.data)
         dispatch(classEdited(res.data));
       })
       .catch((err) => {

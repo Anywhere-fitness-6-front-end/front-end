@@ -20,7 +20,7 @@ const ClassList = (props) => {
     return (
       <div>
         {console.log("class list data", classListData)}
-        {classListData.map((item) => {
+        {classListData.length > 0 ? classListData.map((item)  => {
           return (
             <>
               <ol>
@@ -35,7 +35,7 @@ const ClassList = (props) => {
               </ol>
             </>
           );
-        })}
+        }) : null} 
       </div>
     );
 }
