@@ -17,7 +17,6 @@ export default function Form(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(evt);
 
     axios
       .post(
@@ -25,11 +24,9 @@ export default function Form(props) {
         userData
       )
       .then((res) => {
-        console.log(res);
-        props.history.push("/welcome-info");
+        props.history.push("/");
       })
       .catch((err) => {
-        console.log(err);
         setErroMessage("The user already exist");
       });
   };
@@ -38,7 +35,6 @@ export default function Form(props) {
     const { checked, value, name, type } = evt.target;
     const valueToUse = type === "checkbox" ? checked : value;
     setUserData({ ...userData, [name]: valueToUse });
-    console.log(userData);
   };
   return (
     <div className="component-wrapper">
