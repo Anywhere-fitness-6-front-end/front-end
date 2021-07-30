@@ -1,33 +1,35 @@
 //import axios from "axios";
 import React, { useState } from "react";
+import axiosWithAuth from "../utils/axiosWithAuth"
 
-
-const createClassData = {
-    class_name: '',
-    instructor_name: '',
-    activity_name: '',
-    address: '',
-    class_time: '',
+const createClassData = 
+  {
+    class_name: "",
+    instructor_name: "",
+    activity_name: "",
+    address: "",
+    class_time: "2021-07-31T08:00:00",
     duration: 0,
-    intensity: '',
+    intensity: "",
     max_size: 0,
-    available_slots:0,
-};
+    available_slots: 0,
+  };
 
 const CreateAClass = () => {
     const [classData, setClassData] =useState(createClassData);
     
 
-    
     const onSubmit = evt => { 
         evt.preventDefault()
-        // axios.post('', classData)
-        //     .then(res =>  {
-        //       console.log(res)  
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
+        axiosWithAuth()
+        .post("classes", classData)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+       console.log(classData)
     };
 
     const onChange = evt => {
@@ -66,14 +68,14 @@ const CreateAClass = () => {
                         onChange={onChange}
                     />
                 </label>
-                <label>Class Time
+                {/* <label>Class Time
                    <input
                         type='datetime-local'
                         name='class_time'
                         value={classData.class_time}
                         onChange={onChange}
                    />      
-                </label>
+                </label> */}
                 <label>Duration
                     <input
                         type='number'

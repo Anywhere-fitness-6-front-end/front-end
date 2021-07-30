@@ -19,10 +19,7 @@ const ClassList = (props) => {
 
   }
 
-  // const addClassEvent = (e) => {
-  //   e.preventDefault()
-  //   props.addClass()
-  // }
+
     return (
       <div>
         {console.log("classlist", classListData)}
