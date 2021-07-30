@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { connect } from 'react-redux';
 import { getClassList, addClass } from "../redux/actions/classActions";
+import { useHistory } from "react-router";
 
   
 
@@ -10,19 +11,15 @@ const ClassList = (props) => {
     props.getClassList();
   }, []) 
 
-  // const handleBookClass = () => {
-  //   props.bookClass()
-  // }
+ const { push } = useHistory();
 
-  const decrease = () => {
-    console.log(classListData);
-
-  }
-
-
+ const handleEdit = (id) => {
+   push(`/edit-class/${id}`);
+ };
+ 
     return (
       <div>
-        {console.log("classlist", classListData)}
+        {console.log("class list data", classListData)}
         {classListData.map((item) => {
           return (
             <>
@@ -34,13 +31,11 @@ const ClassList = (props) => {
                 <li> Intensity: {item.intensity} </li>
                 <li> Instructor: {item.instructor} </li>
                 <li> Spots: {item.max_size} </li>
-                <button onClick={decrease}> dec</button>
+                <button onClick={() => handleEdit(item.class_id)}>Update</button>
               </ol>
             </>
           );
         })}
-        {/* <button onClick={handleBookClass}>Book Class</button>
-         */}
       </div>
     );
 }

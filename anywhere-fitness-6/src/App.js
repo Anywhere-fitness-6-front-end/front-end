@@ -9,6 +9,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Booked from "./components/Booked/Booked";
 import ClassSearch from "./components/SearchClass/Class-Search";
 // import PrivateRoute from "./components/Route";
+import ClassSingle from "./components/ClassSingle";
 
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
         <Route exact path="/class-list" component={ClassList} />
       </Switch>
       <Switch>
-        <Route exact path="/edit-class" component={EditDeleteClass} />
+        <Route exact path="/edit-class/:id" component={ClassSingle} />
       </Switch>
       <Switch>
         <Route exact path="/welcome-info" component={WelcomeInfo} />
