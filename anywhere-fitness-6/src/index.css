@@ -13,13 +13,75 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/*Header Styling*/
+
+.headerDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-right: 15px solid #4185F4;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  
+}
+.headerTitle{
+  margin-left: 2%;
+  color: #4185F4;
+  text-shadow: 1px 1px black;
+}
+.headerLinks{
+  margin-right: 2%;
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+} 
+.homeLink{
+  text-decoration: none;
+  font-weight: bold;
+  color: gray;
+  border-right: 2px solid #4185F4;
+  padding-right: 1%;
+}
+.createLink{
+  text-decoration: none;
+  font-weight: bold;
+  color: gray;
+  border-right: 2px solid #4185F4;
+  padding-right: 1%;
+}
+.bookLink{
+  text-decoration: none;
+  font-weight: bold;
+  color: gray;
+  border-right: 2px solid #4185F4;
+  padding-right: 1%;
+}
+.classListLink{
+  text-decoration: none;
+  font-weight: bold;
+  color: gray;
+  border-right: 2px solid #4185F4;
+  padding-right: 1%;
+}
+.editClassLink {
+  text-decoration: none;
+  font-weight: bold;
+  color: gray;
+  border-right: 2px solid #4185F4;
+  padding-right: 1%;
+}
+.signInLink{
+  text-decoration: none;
+  font-weight: bold;
+  color: gray;
+}
 
 /*Create A Class Styling*/
 
 .createClassDiv{
   width:35%; 
   margin: 0 auto;
-  margin-top: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,7 +137,6 @@ code {
 .editClassDiv{
   width:35%; 
   margin: 0 auto;
-  margin-top: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -196,3 +257,4 @@ code {
     margin-right:35%;
   }
 }
+

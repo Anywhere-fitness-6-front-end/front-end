@@ -6,12 +6,14 @@ import ClassList from "./components/Class-list";
 import SignIn from "./components/Sign-in";
 import EditDeleteClass from "./components/Edit-delete-class";
 import WelcomeInfo from "./components/WelcomeInfo";
+import Header from "./components/Header";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 
 function App() {
   return (
     <div className="App">
+      <Header/>
       <Switch>
         <Route exact path="/" component={Form} />
       </Switch>
