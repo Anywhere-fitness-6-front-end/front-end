@@ -2,6 +2,7 @@ import {
   DELETE_CLASS,
   ADD_CLASS,
   EDIT_CLASS,
+  CLASS_DELETED,
   CLASS_EDITED,
   BOOK_CLASS,
   SEARCH_CLASS_LIST,
@@ -59,6 +60,11 @@ const reducer = (state = initialState, action) => {
             : item;
         }),
       };
+      case CLASS_DELETED:
+        return {
+          ...state,
+          classListData: state.classListData.filter((item) => item.class_id !== action.payload),
+        };
     case BOOK_CLASS:
       return {
         ...state,

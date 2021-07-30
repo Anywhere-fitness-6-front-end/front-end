@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router";
-import { editClass } from "../redux/actions/classActions";
+import { editClass, deleteClass } from "../redux/actions/classActions";
 
 const initialValues = 
   [
@@ -48,8 +48,14 @@ const ClassSingle = () => {
     setformData({ ...formData, [name]: value });
   };
 
+  const handleDelete = (id) => {
+   dispatch(deleteClass(id));
+  }
 
-
+  const cancelHandler = (evt) => {
+    evt.preventDefault();
+    push("/class-list")
+  }
 
 
   return (
@@ -146,7 +152,9 @@ const ClassSingle = () => {
           />
         </label>
         <button id="editClass">Edit Class</button>
-      </form>
+        <button id="deleteClass" onClick={() => handleDelete(formData.class_id)}> Remove Class </button>
+        </form>
+
     </div>
   );
 };

@@ -12,9 +12,23 @@ export const DECREASE_CLASS_SPOTS = "DECREASE_CLASS_SPOTS";
 export const INCREASE_CLASS_SPOTS = "INCREASE_CLASS_SPOTS";
 export const CLASS_ADDED = "CLASS_ADDED";
 export const CLASS_EDITED = "CLASS_EDITED";
+export const CLASS_DELETED = "CLASS_DELETED";
 
 export const deleteClass = (id) => {
-  return { type: DELETE_CLASS, payload: id };
+  return (dispatch) => {
+    axiosWithAuth()
+      .delete(`classes/${id}`)
+      .then((res) => {
+        dispatch(classDeleted(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }; 
+};
+
+export const classDeleted = (id) => {
+  return { type: CLASS_DELETED, payload: id };
 };
 
 export const addClass = (newClass) => {
