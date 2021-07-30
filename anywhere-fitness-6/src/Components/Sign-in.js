@@ -14,7 +14,6 @@ const SignIn = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(evt);
 
     axios
       .post(
@@ -22,11 +21,9 @@ const SignIn = (props) => {
         userData
       )
       .then((res) => {
-        console.log(res);
         props.history.push("/welcome-info");
       })
       .catch((err) => {
-        console.log(err);
         setErroMessage("The user does not exist");
       });
   };
@@ -34,7 +31,6 @@ const SignIn = (props) => {
   const handleOnChange = (evt) => {
     const { value, name } = evt.target;
     setUserData({ ...userData, [name]: value });
-    //  console.log(userData)
   };
 
   return (
