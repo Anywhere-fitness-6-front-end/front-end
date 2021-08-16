@@ -3,12 +3,11 @@ import Form from "./components/Sign-up-form";
 import SignIn from "./components/Sign-in";
 import CreateAClass from "./components/Create-a-class"
 import ClassList from "./components/Class-list";
-import EditDeleteClass from "./components/Edit-delete-class";
 import WelcomeInfo from "./components/WelcomeInfo";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Booked from "./components/Booked/Booked";
-import ClassSearch from "./components/SearchClass/Class-Search";
-// import PrivateRoute from "./components/Route";
+import ClassSearch from "./components/ClassSearch";
+// import Route from "./components/Route";
 import ClassSingle from "./components/ClassSingle";
 
 

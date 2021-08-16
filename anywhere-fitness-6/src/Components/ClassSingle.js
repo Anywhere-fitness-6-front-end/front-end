@@ -52,12 +52,6 @@ const ClassSingle = () => {
    dispatch(deleteClass(id));
   }
 
-  const cancelHandler = (evt) => {
-    evt.preventDefault();
-    push("/class-list")
-  }
-
-
   return (
     <div>
       <h1>Edit and delete Class </h1>

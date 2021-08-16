@@ -3,17 +3,22 @@ import { connect } from "react-redux";
 
 const Booked = (props) => {
 const { bookedClasses } = props;
-console.log("bookedclasses booked", bookedClasses)
+
+const removeHandler = (evt) => {
+  evt.preventDefault()
+  console.log("clicked", bookedClasses)
+}
     return (
         <div>
             <h1> 
               Booked list
             </h1>
-            {bookedClasses.map((item) => {
+            {/* {props.bookedClasses.map((item) => {
               return (
-                <p>{item.name}</p>
+                <p>{item}</p>
               )
-            })}
+            })} */}
+            <button onClick={removeHandler}>Remove class</button>
         </div>
     );
 }

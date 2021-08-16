@@ -54,7 +54,6 @@ export const editClass = (id, editedClass) => {
     axiosWithAuth()
       .put(`classes/${id}`, editedClass)
       .then((res) => {
-        console.log("check", res.data)
         dispatch(classEdited(res.data));
       })
       .catch((err) => {
@@ -68,17 +67,17 @@ export const classEdited = (editedClass) => {
 };
 
 
-export const bookClass = (class_id) => {
-  console.log("bookclass action", class_id);
+export const bookClass = (id, class_id) => {
+  console.log("bookclass action", id);
   return (dispatch) => {
     axiosWithAuth()
       .post(`/enroll/${class_id}`)
       .then((res) => {
-        // dispatch(classBooked(id))  changed from class_id
-        console.log(res);
+      console.log(res.data.message);
+      dispatch(classBooked(id))
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Error message", err);
       });
   };
 };
@@ -97,7 +96,6 @@ export const getClassList = () => {
     axiosWithAuth()
       .get("classes")
       .then((res) => {
-        console.log(res)
         dispatch({ type: FETCH_CLASS_SUCCESS, payload: res.data });
       })
       .catch((err) => {
